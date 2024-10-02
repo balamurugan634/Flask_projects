@@ -43,7 +43,7 @@ def getallbooks():
 
 def mybooks(id):
     try:
-        query1="select books.bk_name,books.author from lender inner join books on lender.bk_id = books.bk_id;"
+        query1="select books.bk_name,books.author,lender.status from lender inner join books on lender.bk_id = books.bk_id;"
         con=mydb.cursor(dictionary=True)
         con.execute(query1)
         result=con.fetchall()
