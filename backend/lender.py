@@ -10,29 +10,35 @@ def lendbook():
     try:
         user=request.args.get("user")
         bookid=request.args.get("bk")
+        print(user,bookid)
         con=mydb.cursor(dictionary=True)
         query1="select * from books where bk_id=%s"
         con.execute(query1,[bookid])
         valid_bk=con.fetchone()
         if valid_bk:
-            available=valid_bk['stocks']
+            available=int(valid_bk['stocks'])
+            print(type(available))
             if available > 0:
+                # print('work')
                 query4="select * from lender where bk_id=%s and cust_id=%s"
                 con.execute(query4,[bookid,user])
                 already_exist=con.fetchone()
+                print(already_exist)
                 if already_exist:
+                    print('im working')
                     query2="update books set stocks=%s where bk_id=%s"
-                    con.execute(query2,[valid_bk['stocks']-1,bookid])
+                    con.execute(query2,[int(valid_bk['stocks'])-1,bookid])
                     mydb.commit()
                     query5="update lender set status=%s where cust_id=%s and bk_id=%s"
                     con.execute(query5,['lended',user,bookid])
                     return jsonify({"msg":"books lended"}),200
 
                 else:
+                    print('im working2')
                     query2="update books set stocks=%s where bk_id=%s"
-                    con.execute(query2,[valid_bk['stocks']-1,bookid])
+                    con.execute(query2,[int(valid_bk['stocks'])-1,bookid])
                     mydb.commit()
-                    query3="insert into lender(bk_id,cust_id,status) values(%s,%s,%s) "
+                    query3="insert into lender(bk_id,cust_id,status,created_at) values(%s,%s,%s,now()) "
                     con.execute(query3,[bookid,user,"lended"])
                     mydb.commit()
                     return jsonify({"msg":"books lended"}),200
@@ -63,7 +69,7 @@ def returnbook():
             query3="select * from books where bk_id=%s"
             con.execute(query3,[bookid])
             book=con.fetchone()
-            con.execute(query4,[book['stocks']+1,bookid])
+            con.execute(query4,[int(book['stocks'])+1,bookid])
             mydb.commit()
             return jsonify({"msg":"return success"}),200
         else:

@@ -6,14 +6,19 @@ from authentication import authentication
 from books import books
 from lender import lender
 from flask_cors import CORS
+from root import root
 bcrypt=Bcrypt(app)
 
 
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 app.register_blueprint(authentication,url_prefix="/auth")
+
 app.register_blueprint(books,url_prefix="/books")
+
 app.register_blueprint(lender,url_prefix="/lend")
+
+app.register_blueprint(root,url_prefix="/admin")
 
 
 

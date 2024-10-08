@@ -13,17 +13,18 @@ def register():
         data=request.json
         user_name=data.get("name")
         user_pass=data.get("pass")
+        user_mail=data.get("mail")
         
         con=mydb.cursor(dictionary=True)
         query1="select * from users where name like %s"
         con.execute(query1,[user_name])
-        invalid_user=con.fetchone()
+        invalid_user=con.fetchone() 
         if invalid_user:
           return jsonify({"msg":"user already exist"}),400
         else:
             hashed_pass=bcrypt.generate_password_hash(user_pass)
-            query2="insert into users(name,password,role) values(%s,%s,%s)"
-            con.execute(query2,[user_name,hashed_pass,"customer"])
+            query2="insert into users(name,mail,password,role,created_at) values(%s,%s,%s,%s,now())"
+            con.execute(query2,[user_name,user_mail,hashed_pass,"customer"])
             mydb.commit()
             return jsonify({"msg":"user created"}),201
     except Exception as e:  
