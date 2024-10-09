@@ -3,7 +3,7 @@ import userReducer from './user/userSlice'
 import storage from 'redux-persist/lib/storage'
 import persistReducer from 'redux-persist/es/persistReducer'
 import persistStore from 'redux-persist/es/persistStore'
-const rootreducers=combineReducers({user:userReducer})
+const rootreducers=combineReducers({user2:userReducer})
 const persistconfig={
     key:'root',
     storage,

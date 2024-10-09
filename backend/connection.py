@@ -4,5 +4,5 @@ mydb=mysql.connector.connect(
         host="localhost",
         user="root",
         password="",
-        database="flask1"
+        database="eventmanagement"
 )
