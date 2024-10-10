@@ -5,7 +5,7 @@ app=Flask(__name__)
 from authentication import authentication
 from event import event
 from flask_cors import CORS
-
+from tickets import tickets
 bcrypt=Bcrypt(app)
 
 
@@ -13,7 +13,7 @@ cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 app.register_blueprint(authentication,url_prefix="/auth")
 app.register_blueprint(event,url_prefix='/event')
-# app.register_blueprint(books,url_prefix="/books")
+app.register_blueprint(tickets,url_prefix="/ticket")
 
 # app.register_blueprint(lender,url_prefix="/lend")
 

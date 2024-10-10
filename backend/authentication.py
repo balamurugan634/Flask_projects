@@ -30,10 +30,7 @@ def register():
             return jsonify({"success":True,"msg":"user created"}),201
     except Exception as e:  
         return jsonify({"error":str(e)}),500
-    finally:
-        con.close()
-        mydb.close()
-    
+   
     
     
 @authentication.route('/login',methods=['POST'])
@@ -62,6 +59,4 @@ def login():
             return jsonify({"success":False,"msg":"something went wrong"}),300
     except Exception as e:  
         return jsonify({"error":str(e)}),500
-    finally:
-        con.close()
-        mydb.close()
+    

@@ -22,8 +22,7 @@ def addevent():
         return jsonify({"success":True,"msg":"event added"})
     except Exception as e:
         return jsonify({"error":str(e)})
-    finally:
-        mydb.close()
+   
         
         
 @event.route('/update_event/<id>',methods=['GET','POST'])
@@ -53,6 +52,36 @@ def update_event(id):
        
     except Exception as e:
         return jsonify({"error":str(e)}),500
-    finally:
-        mydb.close()
+   
+        
+@event.route('/allevents',methods=['GET'])
+def get_all_events():
+    try:
+        con=mydb.cursor(dictionary=True)
+        query1="select * from events"
+        con.execute(query1)
+        res=con.fetchall()
+        return jsonify(res),200 
+    except Exception as e:
+        return jsonify({"error":str(e)}),500
+    
+@event.route('/delevent/<id>',methods=['POST'])
+
+def delete_event(id):
+    try:
+        con=mydb.cursor(dictionary=True)
+        query2="select * from events where event_id=%s"
+        con.execute(query2,[id])
+        res=con.fetchone()
+        if res:
+            query1="delete from events where event_id=%s"
+            con.execute(query1,[id])
+            mydb.commit()
+            return jsonify({"success":True,"msg":"event deleted"}),200
+        else:
+            return jsonify({"success":False,"msg":"event not exist"}),300
+    except Exception as e:
+        return jsonify({"error":str(e)}),500
+   
+        
         
