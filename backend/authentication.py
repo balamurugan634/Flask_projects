@@ -11,6 +11,7 @@ authentication=Blueprint("authentication",__name__)
 def register():
     try:
         data=request.json
+        print(data)
         user_name=data.get("name")
         user_pass=data.get("pass")
         user_mail=data.get("mail")

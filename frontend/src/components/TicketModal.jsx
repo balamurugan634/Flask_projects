@@ -1,6 +1,6 @@
 import React from 'react'
 
-const AllBooks = () => {
+const TicketModal = () => {
   return (
     <div>
       
@@ -8,4 +8,4 @@ const AllBooks = () => {
   )
 }
 
-export default AllBooks
+export default TicketModal

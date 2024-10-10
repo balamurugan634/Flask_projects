@@ -27,6 +27,10 @@ const SignIn = () => {
             }
             console.log(data.user)
             dispatch(SigninSuccess(data.user))
+            if(data.user.role==='admin'){
+                navigate('/Dashboard')
+            return
+            }
             navigate('/home')
             return
         } catch{(error)=>{
@@ -40,7 +44,7 @@ const SignIn = () => {
         console.log(formdata)
     }
     return (
-        <div className='w-full h-screen  overflow-hidden mt-20 flex flex-col'>
+        <div className='w-full h-screen  overflow-hidden  flex flex-col'>
             <div className='flex justify-evenly'>
                 <div className='w-full md:w-1/2 h-full '>
                 <div className="lg:max-w-xl flex flex-col mx-auto">

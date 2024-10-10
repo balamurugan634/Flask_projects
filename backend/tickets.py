@@ -6,23 +6,24 @@ tickets=Blueprint("tickets",__name__)
 
 def book_ticket(id):
     try:
-        con=mydb.cursor(dictionary=True)
         data=request.json
+        print(data)
+        con=mydb.cursor(dictionary=True)
+        listitem=data.get('users')
+        booker_id=data.get('bk_id')
+        print(booker_id)
+        print(listitem)
         
-        holder_name=data.get('holder')
-        booker_id=data.get('user_id')
-        phone=data.get('phone')
         query1="insert into tickets(holder_name,event_id,booker_id,phone,status,created_at) values(%s,%s,%s,%s,%s,now())"
         query3="select capacity from events where event_id=%s"
-        con.execute(query3,[id])
-        res=con.fetchone()
-        
         query2="update events set capacity=%s where event_id=%s"
-        
-        con.execute(query1,[holder_name,id,booker_id,phone,"booked"])
-        mydb.commit()
-        con.execute(query2,[int(res['capacity'])-1,id])
-        mydb.commit()
+        for item in listitem:
+            con.execute(query3,[id])
+            res=con.fetchone()
+            con.execute(query1,[item['name'],id,booker_id,item['phone'],"booked"])
+            mydb.commit()
+            con.execute(query2,[int(res['capacity'])-1,id])
+            mydb.commit()
         con.close()
         return jsonify({"success":True,"msg":"ticket booked"}),201
     except Exception as e:
@@ -34,7 +35,7 @@ def update_ticket(id):
         con=mydb.cursor(dictionary=True)
         if request.method=='POST':
             data=request.json
-            holder_name=data.get('holder')
+            holder_name=data.get('holder_name')
             phone=data.get('phone')
             # booker_id=data.get('user_id')
             
@@ -88,7 +89,7 @@ def getalltickets():
 def getmytickets(id):
     try:
         con=mydb.cursor(dictionary=True)
-        query1="select count(ticket_id),tickets.event_id,events.event_title from tickets inner join events on tickets.event_id=events.event_id where tickets.booker_id=%s and tickets.status=%s  group by event_id;"
+        query1="select count(ticket_id),tickets.event_id,events.event_title,events.location from tickets inner join events on tickets.event_id=events.event_id where tickets.booker_id=%s and tickets.status=%s  group by event_id;"
         con.execute(query1,[id,"booked"])
         res=con.fetchall()
         print(res)
@@ -107,10 +108,12 @@ def get_individual_tickets():
     try:
         user=request.args.get('user')
         event=request.args.get('event')
-        query1="select holder_name,phone from tickets where event_id=%s and booker_id=%s"
+        print(user,event)
+        query1="select ticket_id,holder_name,phone from tickets where event_id=%s and booker_id=%s"
         con=mydb.cursor(dictionary=True)
         con.execute(query1,[event,user])
         res=con.fetchall()
         return jsonify({"success":True,"result":res}),200
     except Exception as e:
         return jsonify({"error":str(e)}),500
+# @tickets.route('/details',[])

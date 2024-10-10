@@ -82,6 +82,29 @@ def delete_event(id):
             return jsonify({"success":False,"msg":"event not exist"}),300
     except Exception as e:
         return jsonify({"error":str(e)}),500
+    
+@event.route('/recentevent',methods=['GET'])
+def recent_event():
+    try:
+       con=mydb.cursor(dictionary=True)
+       query1="select * from events order by created_at desc"
+       con.execute(query1)
+       result=con.fetchall()
+       return jsonify({"success":True,"result":result[:4]})
+    except Exception as e:
+        return jsonify({"error":str(e)}),500
+    
+@event.route('/detail/<id>',methods=['GET'])
+def event_detail(id):
+    try:
+       con=mydb.cursor(dictionary=True)
+       query1="select * from events where event_id=%s"
+       con.execute(query1,[id])
+       result=con.fetchone()
+       return jsonify({"success":True,"result":result})
+    except Exception as e:
+        return jsonify({"error":str(e)}),500
+    
    
         
         

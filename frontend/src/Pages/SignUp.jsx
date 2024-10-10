@@ -39,7 +39,7 @@ const SignUp = () => {
         console.log(formdata)
     }
     return (
-        <div className='w-full h-screen  overflow-hidden mt-20 flex flex-col'>
+        <div className='w-full h-screen  overflow-hidden  flex flex-col'>
             <div className='flex justify-evenly'>
                 <div className='w-full md:w-1/2 h-full '>
                 <div className="lg:max-w-xl flex flex-col mx-auto">
@@ -58,6 +58,10 @@ const SignUp = () => {
                             <div className="flex flex-col gap-1">
                                 <label htmlFor="" className='text-md font-semibold'>Email</label>
                                 <input type="email" onChange={handleChange} className='p-2 rounded-sm bg-gray-100 focus:border-green-100 focus:border outline-none' placeholder='Email address' id='mail' required/>
+                            </div>
+                            <div className="flex flex-col gap-1">
+                                <label htmlFor="" className='text-md font-semibold'>Phone</label>
+                                <input type="tel" onChange={handleChange} className='p-2 rounded-sm  bg-gray-100 focus:border-green-100 focus:border outline-none' placeholder='phone number'id='phone' required/>
                             </div>
                             <div className="flex flex-col gap-1">
                                 <label htmlFor="" className='text-md font-semibold'>Password</label>

@@ -1,24 +1,34 @@
 import React, { useState } from 'react'
 import logo from '../assets/logo.jpeg'
-import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { SignoutUsersuccess } from '../Redux/user/userSlice';
 const Navbar = ({ items }) => {
+    const dispatch=useDispatch()
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+    const { currentUser } = useSelector((state) => state.user)
+    const navigate=useNavigate()
     const handleToggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
-
+    const handlelogout=()=>{
+        try {
+            dispatch(SignoutUsersuccess())
+            navigate('/login')
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     // const {currentUser}=useSelector((state)=>state.user)
 
     return (
         <>
-            <nav className='bg-white border-gray-200 shadow-sm fixed  w-full z-20 top-0 font-poppins'>
+           <nav className='text-white  border-gray-200 shadow-sm fixed  w-full z-20 top-0 font-poppins'>
                 <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto ">
                     <a href="" className="flex items-center space-x-3 rtl:space-x-reverse">
                         <img src={logo} className="h-14" alt="Logo" />
-                        <Link to={'/'} className="self-center text-2xl font-semibold whitespace-nowrap ">Brain<span className='text-green-800'>Storm</span></Link>
+                        <Link to={'/'} className="self-center text-2xl font-semibold whitespace-nowrap ">Event<span className=''>Manager</span></Link>
                     </a>
                     <button
                         data-collapse-toggle="Nav-default"
@@ -47,7 +57,7 @@ const Navbar = ({ items }) => {
                     </button>
                     <div className={`${isMenuOpen ? 'block' : 'hidden'} w-full md:block md:w-auto`} id="Nav-default">
                         <ul className="font-medium flex flex-col p-4 md:p-0 mt-4   md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0    dark:border-gray-700">
-                            {
+                            {/* {
                                 items.map((item) => (
 
                                     <li key={item.id} >
@@ -59,12 +69,40 @@ const Navbar = ({ items }) => {
                                         </Link>
                                     </li>
                                 ))
-                            }
+                            } */}
+                            <li >
+                                <Link
+                                    to={`/home`}
+                                    className="block py-2 px-3 text-white   rounded capitalize font-semibold md:p-0 hover:underline transistion-all duration-200 underline-offset-4 "
+                                >
+                                    Home
+                                </Link>
+                            </li>
+                            <li >
+                                <Link
+                                    to={`/allevents`}
+                                    className="block py-2 px-3 text-white   rounded capitalize font-semibold md:p-0 hover:underline transistion-all duration-200 underline-offset-4 "
+                                >
+                                    Events
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    to={`/mybookings/${currentUser.user_id}`}
+                                    className="block py-2 px-3 text-white  rounded capitalize font-semibold md:p-0 hover:underline transistion-all duration-200 underline-offset-4 "
+                                >
+                                    Mybooking
+                                </Link>
+                            </li>
+                            <li>
+                                <button onClick={handlelogout}>logout</button>
+                            </li>
 
                         </ul>
                     </div>
                 </div>
             </nav>
+
         </>
     )
 }

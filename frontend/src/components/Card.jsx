@@ -1,28 +1,30 @@
 import React from "react";
-import book from "../assets/img1.jfif";
+import book from "../assets/card1.jpg";
+import { Link } from "react-router-dom";
+import { MdLocationOn } from "react-icons/md";
 
 const Card = ({data}) => {
   return (
-    <div className=" my-3 w-full sm:max-w-md  sm:shadow-md p-2 flex flex-col items-center  gap-2">
-      <h3 className="text-xl font-semibold text-center">{data.bk_name}</h3>
-      <div className="flex w-full">
-        <img
-          src={book}
-          alt=""
-          className="object-cover w-full h-[300px]"
-          srcset=""
-        />
+    <div className='shadow-md hover:shadow-lg overflow-hidden rounded-lg transition-shadow w-full sm:w-[330px] bg-white'>
+    <Link to={`/event/${data.event_id}`}>
+    <img src={book} className='w-full hover:scale-105 transition-scale duration-300  h-[200px] sm:h-[200px] object-cover overflow-hidden' alt="sdfs" />
+      <div className="p-3 flex flex-col gap-2 w-full">
+          <h1 className='truncate text-lg font-semibold text-slate-800'>{data.event_title}</h1>
+          <div className="flex items-center gap-1 w-full">
+              <MdLocationOn className='h-4 w-4  text-green-700'/>
+              <p className='text-sm text-gray-500 truncate w-full '>{data.location}</p>
+          </div>
+          <p  className='line-clamp-2 text-sm text-gray-500'>{data.description}</p>
+          {/* <p className='text-lg font-semibold text-slate-600'>${listing.offers  ? listing.discountprice.toLocaleString('en-US') :listing.regularprice.toLocaleString('en-US')}{listing.type==='rent' && ' / month'}</p> */}
+
+          {/* <div className="text-slate-700 flex gap-4 text-sm font-semibold">
+              <div className="">{listing.bedrooms} {listing.bedrooms >1 ?' beds':' bed'}</div>
+              <div className="">{listing.bathrooms} {listing.bathrooms >1 ?' baths':' bath'}</div>
+          </div> */}
+          
       </div>
-      <p className="text-justify text-sm text-gray-500">
-       {data.author}
-      </p>
-      <h2 className="font-semibold">
-        stocks left <span className="text-red-600">{data.stocks}</span>
-      </h2>
-      <button className="px-5 py-2 rounded-sm text-white font-semibold bg-slate-700">
-        Lend now
-      </button>
-    </div>
+    </Link>
+  </div>
   );
 };
 
