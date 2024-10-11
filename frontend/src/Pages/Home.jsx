@@ -30,12 +30,21 @@ const Home = () => {
    const listing=['https://images.unsplash.com/photo-1514533450685-4493e01d1fdc?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D','https://images.unsplash.com/photo-1510682657356-6ee07db8204b?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D']
    SwiperCore.use([Navigation])
   return (
-    <div className="bg-slate-200 ">
-            <Swiper navigation >
+    <div className=" mt-10 ">
+            
+
+      <div className=" flex max-w-6xl gap-4 sm:gap-6 px-3 mx-auto p-10 flex-col ">
+        <h1 className='text-2xl lg:text-6xl font-semibold text-slate-600'>Find your <span className='text-slate-800 '>perfect</span> <br /> Weekend <span className="text-yellow-500">Entertainment</span>...</h1>
+        <div className="">
+        <p className='text-gray-600'>weekent is the best platform to book events and concerts.</p>
+          <Link to={'/search'} className='text-green-600 font-semibold'>Explore..</Link>
+        </div>  
+      </div>
+      {/* <Swiper navigation >
         {
           listing.map((list,i) => (
             
-            <SwiperSlide key={i}>
+            <SwiperSlide key={i} className="">
               {console.log(list)}
               <div
                 style={{
@@ -47,22 +56,14 @@ const Home = () => {
               ></div>
             </SwiperSlide>
           ))}
-      </Swiper>
-
-      <div className=" flex max-w-6xl gap-4 sm:gap-6 px-3 mx-auto p-10 flex-col ">
-        <h1 className='text-2xl lg:text-6xl font-semibold text-slate-600'>Find your <span className='text-slate-800 '>perfect</span> <br /> Weekend Entertainment...</h1>
-        <div className="">
-        <p className='text-gray-600'>weekent is the best platform to book events and concerts.</p>
-          <Link to={'/search'} className='text-green-600 font-semibold'>Explore..</Link>
-        </div>  
-      </div>
-      <div className="flex flex-col mb-2 gap-3">
-        <h1 className="font-semibold text-4xl px-3">Our Recent Events</h1>
+      </Swiper> */}
+      <div className="flex flex-col mb-2 gap-3 mt-5">
+        <h1 className="font-semibold text-4xl px-3 text-center text-slate-700">Our Recent Events</h1>
         
         <div className="flex gap-5 px-3 mt-4 flex-wrap">
           {event.map((item,i)=>(<Card data={item} key={i}/>))}
         </div>
-        <div className="flex justify-center"> <Link to={'/getallevents'} className="text-lg rounded-md text-center text-red-50 font-semibold p-2 bg-slate-700 ">Load more</Link></div>
+        <div className="flex justify-center mb-10"> <Link to={'/getallevents'} className="text-lg rounded-md text-center text-red-50 font-semibold p-2 bg-slate-700 ">Load more</Link></div>
        
       </div>
     </div>

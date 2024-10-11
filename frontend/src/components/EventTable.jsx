@@ -29,8 +29,11 @@ const EventTable = ({data}) => {
   return (
     <div className="relative overflow-x-auto">
     <table className="w-full sm:max-w-xl text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-        <thead className="text-xs text-gray-700 bg-blue-800 uppercase text-white">
+        <thead className="text-xs  bg-slate-800 uppercase text-white">
             <tr>
+                 <th scope="col" className="px-6 py-3">
+                   Sno
+                </th>
                 <th scope="col" className="px-6 py-3">
                    event
                 </th>
@@ -52,8 +55,11 @@ const EventTable = ({data}) => {
                
             </tr>
         </thead>
-        <tbody>
+        <tbody className='text-slate-800'>
             {filter.length > 1?filter.map((item,i)=>(<tr className="bg-white border-b " key={i}>
+                <td className="px-6 py-4">
+                    {i+1}
+                </td>
                 <th scope="row" className="px-6 py-4 font-medium  whitespace-nowrap ">
                     {item.event_title}
                 </th>
@@ -77,6 +83,9 @@ const EventTable = ({data}) => {
                     
                 </td>
             </tr>)):data.map((item,i)=>(<tr className="bg-white border-b " key={i}>
+                <td className="px-6 py-4">
+                    {i+1}
+                </td>
                 <th scope="row" className="px-6 py-4 font-medium  whitespace-nowrap ">
                     {item.event_title}
                 </th>

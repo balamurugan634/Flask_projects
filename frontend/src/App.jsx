@@ -89,8 +89,8 @@ function App() {
 
 
       </Routes>
-      <Footer />
-
+      
+      {currentUser === null || !currentUser? '' : currentUser.role === 'customer' ? <Footer />:'' }
     </BrowserRouter>
   )
 }

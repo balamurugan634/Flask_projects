@@ -4,8 +4,11 @@ const AllTickets = ({data}) => {
     return (
         <div className="relative overflow-x-auto">
                 <table className="w-full sm:max-w-xl text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                    <thead className="text-xs text-gray-700 bg-blue-800 text-white uppercase  ">
+                    <thead className="text-xs bg-slate-800 text-white uppercase  ">
                         <tr>
+                        <th scope="col" className="px-6 py-3">
+                                Sno
+                            </th>
                             <th scope="col" className="px-6 py-3">
                                 holder name
                             </th>
@@ -23,8 +26,11 @@ const AllTickets = ({data}) => {
                             </th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className='text-slate-700'>
                         {data.map((item,i)=>( <tr className="bg-white border-b " key={i}>
+                            <td className="px-6 py-4">
+                            {i+1}
+                            </td>
                             <th scope="row" className="px-6 py-4 font-medium  whitespace-nowrap ">
                                 {item.holder_name}
                             </th>

@@ -67,7 +67,7 @@ const TicketUpdate = () => {
                 <input type="tel"  value={details.phone} id='phone' 
                 onChange={handlechange} className='outline-none p-2 bg-gray-100' />
                 </div>
-                <button type='submit' className='bg-green-500 font-semibold text-white p-2 rounded'>Update</button>
+                <button type='submit' className='bg-green-600 font-semibold text-white p-2 rounded'>Update</button>
                 </div>
             </form>
         </div>

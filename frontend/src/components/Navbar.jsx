@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import logo from '../assets/logo.jpeg'
+import logo from '../assets/evlogo.png'
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { SignoutUsersuccess } from '../Redux/user/userSlice';
@@ -24,7 +24,7 @@ const Navbar = ({ items }) => {
 
     return (
         <>
-           <nav className='text-white  border-gray-200 shadow-sm fixed  w-full z-20 top-0 font-poppins'>
+           <nav className=' bg-white shadow border-gray-200 fixed  w-full z-20 top-0 font-poppins'>
                 <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto ">
                     <a href="" className="flex items-center space-x-3 rtl:space-x-reverse">
                         <img src={logo} className="h-14" alt="Logo" />
@@ -73,7 +73,7 @@ const Navbar = ({ items }) => {
                             <li >
                                 <Link
                                     to={`/home`}
-                                    className="block py-2 px-3 text-white   rounded capitalize font-semibold md:p-0 hover:underline transistion-all duration-200 underline-offset-4 "
+                                    className="block py-2 px-3   rounded capitalize font-semibold md:p-0 hover:underline transistion-all duration-200 underline-offset-4 "
                                 >
                                     Home
                                 </Link>
@@ -81,7 +81,7 @@ const Navbar = ({ items }) => {
                             <li >
                                 <Link
                                     to={`/getallevents`}
-                                    className="block py-2 px-3 text-white   rounded capitalize font-semibold md:p-0 hover:underline transistion-all duration-200 underline-offset-4 "
+                                    className="block py-2 px-3   rounded capitalize font-semibold md:p-0 hover:underline transistion-all duration-200 underline-offset-4 "
                                 >
                                     Events
                                 </Link>
@@ -89,13 +89,13 @@ const Navbar = ({ items }) => {
                             <li>
                                 <Link
                                     to={`/mybookings/${currentUser.user_id}`}
-                                    className="block py-2 px-3 text-white  rounded capitalize font-semibold md:p-0 hover:underline transistion-all duration-200 underline-offset-4 "
+                                    className="block py-2 px-3   rounded capitalize font-semibold md:p-0 hover:underline transistion-all duration-200 underline-offset-4 "
                                 >
                                     Mybooking
                                 </Link>
                             </li>
                             <li>
-                                <button onClick={handlelogout}>logout</button>
+                                <button onClick={handlelogout} className='px-1 py-1 bg-red-700 rounded text-white'>logout</button>
                             </li>
 
                         </ul>

@@ -4,7 +4,7 @@ import { FaInstagram } from "react-icons/fa6";
 import { RiTwitterXLine } from "react-icons/ri";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
-import  Logo  from '../assets//logo.jpeg';
+import Logo from '../assets/evlogo.png'
 
 const Footer = () => {
   // return (
@@ -60,7 +60,7 @@ const Footer = () => {
                 alt="FlowBite Logo"
               />
               <span classNameName="self-center text-2xl font-semibold whitespace-nowrap text-slate-950">
-                Happy<span classNameName="text-green-900">Nest</span>
+                Event<span classNameName="text-green-900">Manager</span>
               </span>
             </a>
           </div>
@@ -77,19 +77,15 @@ const Footer = () => {
                 </li>
                 <li className="mb-4">
                   <a href="https://tailwindcss.com/" className="hover:underline">
-                    Shop
+                   Events
                   </a>
                 </li>
                 <li className="mb-4">
                   <a href="https://tailwindcss.com/" className="hover:underline">
-                    Farm
+                   My Bookings
                   </a>
                 </li>
-                <li className="mb-4">
-                  <a href="https://tailwindcss.com/" className="hover:underline">
-                    card
-                  </a>
-                </li>
+                
               </ul>
             </div>
             <div>
