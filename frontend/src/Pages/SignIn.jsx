@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import logo from '../assets/logo.jpeg'
-import side from '../assets/side2.jpg'
+import side from '../assets/side_1.jpg'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { SigninSuccess } from '../Redux/user/userSlice'
