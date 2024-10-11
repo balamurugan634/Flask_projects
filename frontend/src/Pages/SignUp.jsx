@@ -43,10 +43,7 @@ const SignUp = () => {
             <div className='flex justify-evenly'>
                 <div className='w-full md:w-1/2 h-full '>
                 <div className="lg:max-w-xl flex flex-col mx-auto">
-                    {/* <div className='flex gap-2 items-center mt-2' >
-                        <img className='h-[5rem]' src={logo}/>
-                        <h1 className='font-semibold text-2xl'>Brain Storm</h1>
-                    </div> */}
+                    
                     <form method='POST' onSubmit={handlesubmit} className='flex flex-col'>
                         <h1 className='text-3xl font-semibold p-2'>Hi there  &#128075;</h1>
                         <p className='text-md text-gray-400 px-2'>create free account</p>
