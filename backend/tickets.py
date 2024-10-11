@@ -116,4 +116,14 @@ def get_individual_tickets():
         return jsonify({"success":True,"result":res}),200
     except Exception as e:
         return jsonify({"error":str(e)}),500
-# @tickets.route('/details',[])
+
+@tickets.route('/recenttickets',methods=['GET'])
+def recent_tickets():
+    try:
+       con=mydb.cursor(dictionary=True)
+       query1=" select tickets.holder_name,tickets.phone,events.event_title,events.event_date,users.name from tickets inner join events on tickets.event_id=events.event_id inner join users on tickets.booker_id=users.user_id order by tickets.created_at desc"
+       con.execute(query1)
+       result=con.fetchall()
+       return jsonify({"success":True,"result":result})
+    except Exception as e:
+        return jsonify({"error":str(e)}),500

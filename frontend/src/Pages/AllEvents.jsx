@@ -20,9 +20,10 @@ const AllEvents = () => {
   }, [searchkey, allevents]);
 
   useEffect(() => {
+  
     const filtered = allevents.filter((event) =>
-      event.event_date.includes(date)
-    );
+      event.event_date===date)
+    ;
     console.log(filtered);
 
     setfiltereditems(filtered);

@@ -62,7 +62,7 @@ const Home = () => {
         <div className="flex gap-5 px-3 mt-4 flex-wrap">
           {event.map((item,i)=>(<Card data={item} key={i}/>))}
         </div>
-        <div className="flex justify-center"> <Link to={'/allevents'} className="text-lg rounded-md text-center text-red-50 font-semibold p-2 bg-slate-700 ">Load more</Link></div>
+        <div className="flex justify-center"> <Link to={'/getallevents'} className="text-lg rounded-md text-center text-red-50 font-semibold p-2 bg-slate-700 ">Load more</Link></div>
        
       </div>
     </div>

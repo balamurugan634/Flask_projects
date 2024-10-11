@@ -80,7 +80,7 @@ const Navbar = ({ items }) => {
                             </li>
                             <li >
                                 <Link
-                                    to={`/allevents`}
+                                    to={`/getallevents`}
                                     className="block py-2 px-3 text-white   rounded capitalize font-semibold md:p-0 hover:underline transistion-all duration-200 underline-offset-4 "
                                 >
                                     Events

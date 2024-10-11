@@ -28,7 +28,7 @@ const SignIn = () => {
             console.log(data.user)
             dispatch(SigninSuccess(data.user))
             if(data.user.role==='admin'){
-                navigate('/Dashboard')
+                navigate('/dashboard')
             return
             }
             navigate('/home')

@@ -12,6 +12,12 @@ import EventDetail from './Pages/EventDetail'
 import MyBooking from './Pages/MyBooking'
 import ViewTickets from './Pages/ViewTickets'
 import TicketUpdate from './Pages/TicketUpdate'
+import Dashboard from './Pages/Dashboard'
+import AdminTickets from './Pages/AdminTickets'
+import AdminUsers from './Pages/AdminUsers'
+import AdminEvents from './Pages/AdminEvents'
+import UpdateEvent from './Pages/UpdateEvent'
+import AddEvent from './Pages/AddEvent'
 function App() {
   const [role, setRole] = useState(null)
   const { currentUser } = useSelector((state) => state.user)
@@ -59,13 +65,27 @@ function App() {
       <Routes>
         <Route path='/login' element={<SignIn />} />
          <Route path='/home' element={<Home />} /> 
-       
+         <Route path='/addevent' element={<AddEvent />} /> 
+         <Route path='/dashboard/addevent' element={<AddEvent />} />
+       <Route path='/alltickets' element={<AdminTickets />} /> 
+       <Route path='/dashboard/alltickets' element={<AdminUsers />} /> 
+       <Route path='/allusers' element={<AdminUsers />} /> 
+       <Route path='/dashboard/allusers' element={<AdminUsers />} /> 
+
+       <Route path='/allevents' element={<AdminEvents />} /> 
+       <Route path='/dashboard/allevents' element={<AdminEvents />} /> 
+
         <Route path='/' element={<SignUp />} />
-        <Route path='/allevents' element={<AllEvents />} />
+        <Route path='/getallevents' element={<AllEvents />} />
         <Route path="/event/:id" element={<EventDetail />} />
         <Route path="/mybookings/:id" element={<MyBooking />} />
         <Route path="/eventticket/:id" element={<ViewTickets />} />
         <Route path="/updateticket/:id" element={<TicketUpdate />} />
+        <Route path='/dashboard' element={<Dashboard />} />
+        <Route path="/updateevent/:id" element={<UpdateEvent />} />
+
+
+
 
       </Routes>
 

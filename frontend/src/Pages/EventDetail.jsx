@@ -10,6 +10,7 @@ import { IoTicket } from "react-icons/io5";
 import {
     FaBath,
     FaBed,
+    FaCalendar,
     FaChair,
     FaMapMarkedAlt,
     FaMapMarkerAlt,
@@ -128,10 +129,16 @@ const EventDetail = () => {
             )}
             <div className="flex flex-col max-w-4xl mx-auto p-3 my-3 gap-3">
                 <h1 className="text-2xl font-semibold">{deatils.event_title}</h1>
-                <p className="flex items-center  gap-2 text-slate-600 text-sm">
+                <div className="flex gap-2"><p className="flex items-center  gap-2 text-slate-600 text-sm">
                     <FaMapMarkerAlt className="text-green-700" />
                     {deatils.location}
                 </p>
+                <p className="flex items-center  gap-2 text-slate-600 text-sm">
+                <FaCalendar className="text-blue-700" />
+
+                  {deatils.event_date}</p>
+                </div>
+                
                 <p className="text-slate-600 text-sm">
                     {deatils.description}
                 </p>
