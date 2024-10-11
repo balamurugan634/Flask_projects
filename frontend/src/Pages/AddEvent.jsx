@@ -23,12 +23,12 @@ const AddEvent = () => {
           complete: async (results) => {
             try {
                 console.log(results.data)
-              const response = await axios.post('http://localhost:5000/event/addevent', results.data);
+              const res = await axios.post('http://localhost:5000/event/addevent', results.data);
               setMessage('File uploaded successfully!');
-              const data=response.json()
-              if (data.success===false){
-                console.log(error)
-              }
+            //   const data=await res.json()
+            //   if (data.success===false){
+            //     console.log(error)
+            //   }
               navigate('/dashboard/allevents')
             } catch (error) {
               setMessage('Error uploading file: ' + error.message);

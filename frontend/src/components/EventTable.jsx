@@ -44,6 +44,9 @@ const EventTable = ({data}) => {
                     date
                 </th>
                 <th scope="col" className="px-6 py-3">
+                    Seats left
+                </th>
+                <th scope="col" className="px-6 py-3">
                     actions
                 </th>
                
@@ -54,14 +57,17 @@ const EventTable = ({data}) => {
                 <th scope="row" className="px-6 py-4 font-medium  whitespace-nowrap ">
                     {item.event_title}
                 </th>
-                <td className="px-6 py-4">
+                <th className="px-6 py-3   font-medium  whitespace-nowrap">
                     {item.description}
-                </td>
+                </th>
                 <td className="px-6 py-4">
                     {item.location}
                 </td>
                 <td className="px-6 py-4">
                     {item.event_date}
+                </td>
+                <td className="px-6 py-4">
+                    {item.capacity}
                 </td>
                 <td className="px-6 py-4 ">
                     <div className="flex gap-2">
@@ -82,6 +88,9 @@ const EventTable = ({data}) => {
                 </td>
                 <td className="px-6 py-4">
                     {item.event_date}
+                </td>
+                <td className="px-6 py-4">
+                    {item.capacity}
                 </td>
                 <td className="px-6 py-4 ">
                     <div className="flex gap-2">

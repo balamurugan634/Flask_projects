@@ -18,6 +18,7 @@ import AdminUsers from './Pages/AdminUsers'
 import AdminEvents from './Pages/AdminEvents'
 import UpdateEvent from './Pages/UpdateEvent'
 import AddEvent from './Pages/AddEvent'
+import Footer from './components/Footer.jsx'
 function App() {
   const [role, setRole] = useState(null)
   const { currentUser } = useSelector((state) => state.user)
@@ -88,6 +89,7 @@ function App() {
 
 
       </Routes>
+      <Footer />
 
     </BrowserRouter>
   )

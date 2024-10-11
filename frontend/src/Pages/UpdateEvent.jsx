@@ -58,6 +58,10 @@ const UpdateEvent = () => {
         <input type="text" value={details.event_title} id='event_title' 
         onChange={handlechange}className='outline-none p-2 bg-gray-100' />
         </div>
+        <div className="flex gap-3 items-center"><label htmlFor=" "className='font-semibold'>Date(yyyy-mm-dd)</label>
+        <input type="text" value={details.event_date} id='event_date' 
+        onChange={handlechange}className='outline-none p-2 bg-gray-100' />
+        </div>
         <div className="flex gap-3 items-center"><label htmlFor=" "className='font-semibold'>Description</label>
         <input type="text" value={details.description} id='description' 
         onChange={handlechange}className='outline-none p-2 bg-gray-100' />

@@ -58,14 +58,9 @@ def update_event(id):
             event_location=data.get('location')
             event_date=data.get('event_date')
             event_capacity=data.get('capacity')
-            parsed_date = datetime.strptime(event_date, "%a, %d %b %Y %H:%M:%S %Z")
-
-            formatted_date = parsed_date.strftime("%Y-%m-%d")
-
-            print(event_date)
-            print(formatted_date)
+          
             query2='update events set event_title=%s,description=%s,location=%s,event_date=%s,capacity=%s where event_id=%s'
-            con.execute(query2,[event_title,event_description,event_location, formatted_date,event_capacity,id])
+            con.execute(query2,[event_title,event_description,event_location, event_date,event_capacity,id])
             
             mydb.commit()
             return jsonify({'success':True,'msg':'updated successfully'}),200

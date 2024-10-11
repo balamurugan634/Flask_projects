@@ -21,12 +21,7 @@ const Card = ({data}) => {
                 <FaTicket className="text-blue-700" />
 
                 {data.capacity} left {data.event_date}</p>
-          {/* <p className='text-lg font-semibold text-slate-600'>${listing.offers  ? listing.discountprice.toLocaleString('en-US') :listing.regularprice.toLocaleString('en-US')}{listing.type==='rent' && ' / month'}</p> */}
-
-          {/* <div className="text-slate-700 flex gap-4 text-sm font-semibold">
-              <div className="">{listing.bedrooms} {listing.bedrooms >1 ?' beds':' bed'}</div>
-              <div className="">{listing.bathrooms} {listing.bathrooms >1 ?' baths':' bath'}</div>
-          </div> */}
+         
           
       </div>
     </Link>
